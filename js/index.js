@@ -1,31 +1,32 @@
 'use strict';
 
 const render = (root) => {
-  root.empty();
-  const wrapper = $('<div class="wrapper"></div>');
-  wrapper.append(Header(_ => render(root)));
-     root.append(wrapper);
-  
-}
+    root.empty();
+    const wrapper = $('<div class="wrapper"></div>');
+    //Componentes
+    wrapper.append(Header());
+    wrapper.append(Search());
+    //wrapper.append(PokeGrid());
+
+    root.append(wrapper);
+	 $("img.lazy").lazyload();
+};
 
 const state = {
-  pokemon: null,
-  selectedPokemon: null
+    datapokemon: null,
+    namepokemon: null,
 };
 
 $( _ => {
 
-  getJSON('http://pokeapi.co/api/v2/pokemon-species/', (err, json) => {
+    getJSON('http://pokeapi.co/api/v2/pokedex/1/', (err, json) => {
 
-    if (err) { return alert(err.message);}
-      
-    state.pokemon = json;
+        if (err) { return alert(err.message);}
 
-    const root = $('.root');
-    render(root);
-      
-  });
+        state.datapokemon = json;
 
+        const root = $('.root');
+        render(root);
+    });
+	
 });
-
-

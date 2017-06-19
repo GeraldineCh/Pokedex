@@ -1,63 +1,37 @@
-/*'use strict';
-const Gasolinera = (data,update)=>{
-    const contenedor = $("<div class='general'></div>");
-    const dato = $("<span class='titulo'>"+data.name+"</span>");
-    const info = $("<p>"+data.address+"</p>");
-    const distrito = $("<p>"+data.district+"</p>");
-    const ubicacion = $("<a class='go-maps'><i class='fa fa-map'></i></a>");
+'use strict';
 
-    contenedor.append(dato);
-    contenedor.append(info);
-    contenedor.append(distrito);
-    contenedor.append(ubicacion);
-    
-    ubicacion.on("click", (e) => {
-        e.preventDefault();
-        state.selectedStation = data;
-        update();
-    });
+const Search = (update) => {
+    const parent = $('<div class="container search"></div>');
+    const entry = $('<div class="input-field col s7"></div>');
+    const icon = $('<span><i class="fa fa-search"></i></span>');
+    const input = $('<input type="text"/>');
+    const row = $('<div class="row"></div>')
+    const reveal = $('<div></div>');
+    const filter = $('<div class="filter"></div>');
 
-    return contenedor;
+    entry.append(icon);
+    entry.append(input);
+    parent.append(entry);
+    parent.append(row);
+    row.append(reveal);
 
+	input.on('keyup', (e) => {
+		if(input.val() != 0){
+			const value = filterByName(state.namepokemon, input);
+			reRender(value, parent.next());
+		}
+	});
+	
+  state.datapokemon.pokemon_entries.forEach(function (e){ 
+      reveal.append(PokeGrid(e,update));
+  });  
+	
+    return parent;
+}
+
+const reRender = (filter, value, update)=>{
+    filter.empty();
+	value.forEach((e)=> {
+		filter.append(PokeGrid(e,update));
+	});
 };
-
-const reRender = (estaciones,finded,update)=>{
-    estaciones.empty();
-
-    finded.forEach(station=>{
-        estaciones.append(Gasolinera(station,update));
-
-    });
-};
-
-const Search = (update)=>{
-    const contenedor2 = $("<div id='buscador'></div>");
-    const search  = $("<div class='input-search'></div>");
-    const search2 = $("<div class='input-search2'></div>");
-    const iconLoop = $("<i class='fa fa-search'></i>");
-    const input = $("<input type='text' placeholder='Ingrese distrito:'>");
-    const estaciones = $("<div></div>");
-    
-    state.stations.forEach(station=>{
-        estaciones.append(Gasolinera(station,update));
-
-    });
-    
-    search2.append(iconLoop);
-    search2.append(input);
-    search.append(search2);
-    contenedor2.append(search);
-    contenedor2.append(estaciones);
-
-    input.on("keyup", () =>{		
-        if(input.val() != ""){
-            var finded = filterByDistrict(state.stations,input.val());
-        }
-
-        reRender(estaciones,finded,update);	
-    });
-
-    return contenedor2;	
-};
-
-*/

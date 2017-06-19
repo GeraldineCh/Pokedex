@@ -1,0 +1,83 @@
+@font-face {
+	font-family: Flexo;
+	font-weight: thin;
+	src: url('/public/assets/font/Flexo/Flexo-Regular.otf') format("opentype");
+}
+body {
+	font-family: Flexo;
+}
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+h1{
+	color: #e84848;
+}
+.input-field input[type=text]{
+	background-color: white;
+	width: 60%;
+	color: black;
+	padding-left: 40px;
+}
+.fa-search{
+	font-size: 20px;
+	color: black;
+	position: absolute;
+	left: 10px;
+	top: 10px;
+}
+.input-field{
+	position: relative;
+}
+.float-right{
+	float: right;
+}
+button{
+	padding: 0 12px 0 12px;
+	background-color: #7aa44a;
+	cursor: pointer;
+}
+.modal .modal-close{
+	font-size: 20px;
+}
+.pokename{
+	text-transform: capitalize;
+}
+.image{
+	height: 120px;
+	padding-top: 20px;
+}
+.cont-grid{
+	height: 200px;
+	background-color: #dbdbdb;
+	border-radius: 10px;
+}
+.search .row .col.m3{
+	width: 15%;
+	margin-left: 30px;
+	margin-bottom: 30px;
+}
+@media only screen and (min-width: 993px){
+	.search{
+		width: 85%;
+	}
+}
+.modal .title-modal{
+	font-size: 30px;
+}
+
+
+.modal .ico-close{
+	font-size: 24px;
+}
+.modal{
+	background-color: #edecec;
+	height: 300px;
+}
+.modal .description{
+	background-color: #36a4d3;
+}
+.padd-left{
+	padding-left: 50px;
+}

@@ -1,20 +1,19 @@
 'use strict';
 
-
 const getJSON = (url, cb) => {
 
-  const xhr = new XMLHttpRequest();
+    const xhr = new XMLHttpRequest();
 
-  xhr.addEventListener('load', () => {
+    xhr.addEventListener('load', () => {
 
-    if (xhr.status !== 200) {
-      return cb(new Error('Error loading JSON from ' + url + '(' + xhr.status + ')'));
-    }
+        if (xhr.status !== 200) {
+            return cb(new Error('Error loading JSON from ' + url + '(' + xhr.status + ')'));
+        }
 
-    cb(null, xhr.response);
-  });
+        cb(null, xhr.response);
+    });
 
-  xhr.open('GET', url);
-  xhr.responseType = 'json';
-  xhr.send();
+    xhr.open('GET', url);
+    xhr.responseType = 'json';
+    xhr.send();
 };
